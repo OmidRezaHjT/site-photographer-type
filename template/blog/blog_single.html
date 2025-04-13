@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-
+{% load humanize %}
 {% block content %}
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -90,29 +90,19 @@
 									<div class="post-content bgWhite eleven columns  ofsInTop ofsInBottom">
 
 										<div class="post-meta">
-											<h5>Mai 11, 2015</h5>
+											<h5>{{post.publish_date|naturaltime}}</h5>
 										</div>
 										
 										<div class="post-title ofsTSmall ofsBSmall">
-										<h1><a href="{% url 'blog:single' %}">Photography essentials</a></h1>
+										<h1><a href="#">{{post.title}}</a></h1>
 										</div>
 										
 										
 										<div class="post-detail tLeft ofsTSmall single">
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-											 sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-											 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-											 aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-											 voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-											 non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+										<p>{{post.content|safe}}</p>
 											
 	
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-											 sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-											 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-											 aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-											 voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-											 non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+
 											
 
 										
@@ -121,8 +111,10 @@
 										
 										<div class="meta-bottom ofsTMedium">
 											<ul>
-												<li><i class="ti-user"></i>By <a href="#">Benaissa Ghrib</a>	</li>
-												<li><i class="ti-tag"></i>Taged <a href="#">Photography</a>	</li>
+												<li><i class="ti-user"></i>By <a href="#">{{post.author.get_full_name}}</a>	</li>
+												{% for cat in post.category.all %}
+												<li><i class="ti-tag"></i>Taged <a href="#">{{cat.name}}</a> {% if not forloop.last %} ,{% endif %}	</li>
+												{% endfor %}
 											</ul>
 										</div>
 										
