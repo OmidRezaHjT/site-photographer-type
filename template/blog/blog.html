@@ -1,6 +1,8 @@
 
-
+{% extends 'base.html' %}
 {% load static %}
+
+{% block content %}
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -53,134 +55,7 @@
 <div id="wrapper">
 	
 	
-	<!--Nav container-->
-	<header class="header">
-		
-		
-		<!--Nav bar-->
-		<div class="nav-bar">
-			
-		<!--Container-->
-		<div class="container">
-		
-		<div class=" main-nav">
-			
-			
-		<div class="four columns">
-			<a href="index.html">
-				<img class="logo" alt="Logo" src="img/logo.png">
-			</a>
-		</div>
-		
-		
-		
-			<div class="twelve columns tRight nav-holder">
-
-				<a href="#" class="mobile-btn" ><i class="ti-menu"></i></a>
-				
-			
-			
-				<nav class="menu-holder main-nav">
-					<ul class="menu ">
-					<li class="sub"><a href="#">Home</a>
-
-
-
-					<ul class="dropDown">
-						<li><a href="index.html">Home Intro</a></li>
-						<li><a href="index_alt.html">Home Slider</a></li>
-						<li><a href="index_alt_2.html">Home Grid</a></li>
-						<li><a href="index_masonry.html">Home Masonry</a></li>
-						<li><a href="index_feed.html">Insta Feed</a></li>
-					</ul>	
-
-					</li>
-					<li class="sub"><a  href="#">About</a>
-					
-					
-							<ul class="dropDown">
-								<li><a href="about.html">Layout 1</a></li>
-								<li><a href="about_alt.html">Layout 2</a></li>
-								<li><a href="clients.html">Clients</a></li>
-							</ul>
-					
-					
-					</li>
-						<li class="sub"><a  href="#">Works</a>
-
-								<ul class="dropDown">
-									<li><a href="works.html">Albums nav</a></li>
-									<li><a href="works_alt.html">Grid Filter</a></li>
-									<li><a href="works_masonry.html">Masonry Filter</a></li>
-									<li><a href="works_alt_wide.html">Grid Wide</a></li>
-									<li><a href="works_masonry_wide.html">Masonry Wide</a></li>
-									<li><a href="work_single.html">Work Single</a></li>
-								</ul>
-
-						</li>
-
-
-
-					<li class="sub"><a  href="#">Shop</a>
-
-							<ul class="dropDown">
-								<li><a href="shop.html">Products</a></li>
-								<li><a href="shop_product.html">Products Single</a></li>
-							</ul>
-
-					</li>
-
-
-
-					<li class="sub"><a class="active"  href="blog.html">Blog</a>
-
-							<ul class="dropDown">
-								<li><a class="active" href="blog.html">BLog</a></li>
-								<li><a href="blog_single.html">Blog Single</a></li>
-							</ul>
-
-
-					</li>
-					<li class="sub"><a  href="#">Contact</a>
-					
-							<ul class="dropDown">
-								<li><a href="contact.html">Short</a></li>
-								<li><a href="contact_alt.html">Extended</a></li>
-							</ul>
-					
-					</li>
-					
-
-					
-					</ul>
-					
-					
-						<ul class="cart">
-							<li><div class="cart-info"><i class="ti-bag"></i><span class="count">1</span></div>
-
-								<ul class="dropDown">
-									<li>Your cart is empty</li>
-								</ul>
-							</li>
-						</ul>
-					
-					
-					
-				</nav>
-				
-			</div>
-			
-			
-		</div>
-			
-		</div>
-		<!--End container-->
-		
-		</div>
-		<!--End nav bar-->
-		
-	</header>
-	<!--End header-->
+	
 	
 	
 	
@@ -203,7 +78,7 @@
 									
 									<!--Post media-->
 									<div class="post-media background-image">
-										<img alt="" class="" src="img/blog/1.jpg">
+										<img alt="" class="" src="{% static 'img/blog/1.jpg' %}">
 	
 									</div>
 									<!--End post media-->
@@ -267,8 +142,8 @@
 										
 										<ul class="slides">
 											
-										<li class="background-image"><img src="img/blog/3.jpg"  alt=""/></li>
-										<li class="background-image"><img src="img/blog/2.jpg" alt=""/></li>
+										<li class="background-image"><img src="{% static 'img/blog/3.jpg' %}"  alt=""/></li>
+										<li class="background-image"><img src="{% static 'img/blog/2.jpg' %}" alt=""/></li>
 										</ul>
 										
 										
@@ -289,7 +164,7 @@
 										</div>
 										
 										<div class="post-title ofsTSmall ofsBSmall">
-										<h1><a href="#">Raw processing</a></h1>
+										<h1><a href="{% url 'blog:single' %}">Raw processing</a></h1>
 										</div>
 										
 										
@@ -355,37 +230,7 @@
 			
 			
 
-					<!--Footer-->	
-						<footer class="footer-opaque ofsInMTop ofsInMBottom footer">
-
-
-							<!--Container-->
-						<div class="container">
-						
-
-								<div class="eight columns rights">
-									<p>Copyrights © 2015 - Azad Amundsen<br>
-									<a href="mailto:ghribbenaissa@gmail.com">azad@azadamundsen.com</a></p>
-								</div>
-
-
-								<div class="eight columns tRight">
-										<ul class="socials-footer socials">
-											<li><a href="#">Facebook</a></li>
-											<li><a href="#">Pinterest</a></li>
-											<li><a href="#">Instagram</a></li>
-											<li><a href="#">Twitter</a></li>
-
-
-									</ul>
-								</div>
-
-
-							</div>
-							<!--End container-->
-
-						</footer>
-						<!--End footer-->
+					
 			
 			
 			
@@ -416,3 +261,5 @@
 
     </body>
 </html>
+
+{% endblock %}
