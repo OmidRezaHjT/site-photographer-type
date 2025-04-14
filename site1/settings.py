@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'Blog',
     'django_summernote',
+    'taggit',
 ]
 
 MIDDLEWARE = [
