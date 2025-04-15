@@ -140,13 +140,26 @@
 								
 									<div class="pagination blog  tCenter">
 									<ul>
-										<li class="prev"><a href="#"><i class="icon-angle-double-left"></i></a></li>
-										<li><a href="#">1</a></li>
-										<li><a href="#" class="selected">2</a></li>
-										<li><a href="#">3</a></li>
-										<li><a href="#">4</a></li>
-										<li class="next"><a href="#"><i class="icon-angle-double-right"></i></a></li>
-										</ul>
+										<div class="pagination blog  tCenter">
+											<ul>
+												{% if posts.has_previous %}
+												<li class="prev"><a href="?page={{posts.previous_page_number}}"><i
+															class="icon-angle-double-left"></i></a></li>
+												{% endif %}
+												{% for i in posts.paginator.page_range %}
+												{% if posts.number == i %}
+												<li><a href="?page={{i}}" class="selected">{{i}}</a></li>
+												{% else %}
+												<li><a href="?page={{i}}">{{i}}</a></li>
+												{% endif %}
+												{% endfor %}
+				
+												{% if posts.has_next %}
+												<li class="next"><a href="?page={{posts.next_page_number}}"><i
+															class="icon-angle-double-right"></i></a></li>
+												{% endif %}
+											</ul>
+										</div>
 								</div>
 								
 								
