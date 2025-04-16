@@ -27,6 +27,12 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# sites framework
+SITE_ID = 1
+
+# robots
+ROBOTS_USE_HOST = True
+ROBOTS_USE_SITEMAP = True
 
 # Application definition
 
@@ -44,6 +50,9 @@ INSTALLED_APPS = [
     'django_summernote',
     'taggit',
     'captcha', 
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
+    'robots',
 ]
 
 MIDDLEWARE = [
