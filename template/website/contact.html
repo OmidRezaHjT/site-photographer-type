@@ -97,29 +97,17 @@
 
 
 					<div class="eight columns contact-info info-left bgDark tLeft">
-						<h1>Need some shots ?</h1>
-
-
-						<p> AZAD AMUNDSEN<br>Email / <a href="#">azad@azadamundsen.com</a><br>Cell / 23.456.789.456</p>
-
-						<p>
-							STUDIO CONTACT<br>
-							AZAD STUDIO / studio@azadamundsen.com<br>
-							Cell / 23.456.789.456
-						</p>
-
-
-
-						<p>
-							ADDRESS<br>
-							1234 Street Road<br>
-							City Name, IN 567 890.
-						</p>
-
-
-
-
-					</div>
+						<h1 style="margin-bottom: 30px;">Need some shots ?</h1>
+					  
+						<div style="margin-bottom: 20px;">
+						  <p>Email / <a href="mailto:roshankazemi2@gmail.com">roshankazemi2@gmail.com</a></p>
+						  <p>Cell / +989012319515</p>
+						</div>
+					  
+						<div style="margin-top: 30px;">
+						  <p><a href="https://www.instagram.com/_Camoshan_/" class="link link-light">_Camoshan_</a></p>
+						</div>
+					  </div>
 
 
 					<div class="eight columns contact-form info-right bgWhite tLeft">
@@ -131,22 +119,28 @@
 
 
 
-						<form action="send.php" method="post">
+						<form action="{% url 'website:contact' %}" method="post">
+							{% csrf_token %}
 							<input type="text" name="name" id="name" value="" placeholder="Name *">
+							<input type="text" name="subject" id="subject" value="" placeholder="Subject *">
 							<input type="text" name="email" id="email" value="" placeholder="Email *">
 							<textarea rows="10" cols="45" id="message" placeholder="Message *"
 								name="message"></textarea>
-							<input type="submit" value="Send message" class="submit">
+							<div class="pb-3 captcha-wrapper">
+								<span class="captcha-label">Please fill out the captcha:</span>
+								<div class="captcha-box">{{ form.captcha }}</div>
+							</div>
+							<button type="submit" class="btn-send">Send message</button>
 						</form>
 
 
+
 						<!--Reply form message-->
-						<div id="success">
-							<h2>Your message has been sent. Thank you!</h2>
-						</div>
-						<div id="error">
-							<h2>Sorry your message can not be sent.</h2>
-						</div>
+						{% if messages %}
+						{% for message in messages %}
+						<div class="alert {{ message.tags }}">{{ message }}</div>
+						{% endfor %}
+						{% endif %}
 						<!--End reply form message-->
 
 
@@ -265,8 +259,8 @@
 				position: uniLatlng,
 				map: map,
 				title: "دانشگاه هنر تهران"
-				
-				
+
+
 			});
 
 			map.mapTypes.set('map_style', customMap);

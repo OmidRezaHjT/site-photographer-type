@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'multi_captcha_admin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -42,6 +43,7 @@ INSTALLED_APPS = [
     'Blog',
     'django_summernote',
     'taggit',
+    'captcha', 
 ]
 
 MIDDLEWARE = [
@@ -134,3 +136,12 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# captcha
+CAPTCHA_IMAGE_SIZE = (200, 65)
+CAPTCHA_FONT_SIZE = 42
+
+# captcha admin setting
+MULTI_CAPTCHA_ADMIN= {
+    'engine' : 'simple-captcha',
+}
