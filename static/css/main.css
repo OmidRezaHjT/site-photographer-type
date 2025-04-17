@@ -2084,4 +2084,23 @@ button.btn-send {
 	border-radius: 6px;
 	background-color: #f9f9f9;
 }
+
+.captcha-box-comment {
+	border: 1px solid #ccc;
+	padding: 4px;
+	border-radius: 6px;
+	background-color: #f9f9f9;
+	max-width: 220px;
+}
+
+.captcha-wrapper-comment {
+	display: flex;
+	align-items: center;
+	gap: 3px;
+	height: 20px;
+	
+	
+}
+
+
 /* -------------------- End media queries -------------------- */

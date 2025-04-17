@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'debug_toolbar',
     'website.apps.WebsiteConfig',
     'django.contrib.humanize',
     'Blog',
@@ -63,6 +64,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
 ]
 
 ROOT_URLCONF = 'site1.urls'
@@ -154,3 +156,8 @@ CAPTCHA_FONT_SIZE = 42
 MULTI_CAPTCHA_ADMIN= {
     'engine' : 'simple-captcha',
 }
+
+
+INTERNAL_IPS = [
+    "127.0.0.1",
+]

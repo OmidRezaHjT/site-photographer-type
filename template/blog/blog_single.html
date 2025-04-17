@@ -2,6 +2,7 @@
 {% load static %}
 {% load humanize %}
 {% block content %}
+{% load blog_tags %}
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -21,6 +22,7 @@
 		<link href="{% static 'css/font.css' %}" rel="stylesheet" type="text/css">
 		<link href="{% static 'css/fontello.css' %}" rel="stylesheet" type="text/css">
 		<link href="{% static 'css/themify-icons.css' %}" rel="stylesheet" type="text/css">
+		
 		
         <!--[if gte IE 9]>
         	<link rel="stylesheet" type="text/css" href="{% static 'css/ie9.css' %}" />
@@ -132,7 +134,7 @@
 								
 								<!--Comments-->
 								<div class="eleven columns comment-holder tLeft bgWhite">
-								<h2 class="title">20 Comments</h2>
+								<h2 class="title">{% comments-count post.id %} Comments</h2>
 
 
 								<!--Entries container-->	
@@ -142,90 +144,27 @@
 
 									<ul class="comments clearfix">
 									<li>
+									
 									<div class="comment"> 
-
+									{% for comment in comments %}
 									<div class="author-img">
-										<img src="{% static 'img/comment/c1.jpg' %}" alt="">
+										<img src="{% static 'img/comment/commentprof.jpg' %}" alt="">
 
 									</div>  
 									<div class="comment-content">
 										<div class="comments-info">
-											<div class="author"><a href="#">Benaissa Ghrib</a></div>
-											<div class="date"><a href="#">July 19, 2013 at 12 am</a></div>
+											<div class="author"><a href="#">{{comment.name}}</a></div>
+											<div class="date"><a>{{comment.created_date|naturalday}}</a></div>
 										</div>
-										<p class="expert">Pellentesque habitant morbi tristique senectus 
-										et netus et malesuada fames ac turpis egestas. Curabitur tempor
-										 vehicula porta. Phasellus magna arcu, commodo non porta vulputate,
-										 mattis eget lacus. Nulla eget leo ipsum.</p>
+										<p class="expert">{{ comment.message }}</p>
+
 																						</div>
 
-											<div class="reply-btn">
-											<a class="link" href="#replyForm">
-											Reply</a></div> 
+											
 											</div>
-
-
-										<ul class="replys children">
-												<li>
-												<div class="comment children">
-												<div class="author-img">
-													<img src="{% static 'img/comment/c2.jpg' %}" alt="">
-
-												</div> 
-
-
-
-									<div class="comment-content">
-									<div class="comments-info">
-									<div class="author"><a href="#">Benaissa Ghrib</a></div>
-									<div class="date"><a href="#">July 19, 2013 at 12 am</a></div>
-									</div>
-									<p class="expert">Pellentesque habitant morbi tristique senectus et netus et malesuada fames
-									ac turpis egestas. Curabitur tempor vehicula porta.
-									Phasellus magna arcu, commodo non porta vulputate, mattis eget lacus. Nulla eget leo ipsum.</p>
-									</div>
-
-									<div class="reply-btn">
-									<a class="link" href="#replyForm">Reply</a></div> 
-									</div>
-									</li>
-									</ul>
-									</li>
-									
-									
-									
-									
-									
-									<li>
-										<div class="comment"> 
-
-								<div class="author-img">
-									<img alt="" src="{% static 'img/comment/c1.jpg' %}">
-
-								</div>  
-								<div class="comment-content">
-									<div class="comments-info">
-										<div class="author"><a href="#">Benaissa Ghrib</a></div>
-										<div class="date"><a href="#">July 19, 2013 at 12 am</a></div>
-									</div>
-									<p class="expert">Pellentesque habitant morbi tristique senectus 
-									et netus et malesuada fames ac turpis egestas. Curabitur tempor
-									 vehicula porta. Phasellus magna arcu, commodo non porta vulputate,
-									 mattis eget lacus. Nulla eget leo ipsum.</p>
-																					</div>
-
-										<div class="reply-btn">
-										<a href="#replyForm" class="link">
-										Reply</a></div> 
-										</div>
-									</li>
-									
-									
-									
-								
-									</ul>
-									<!--End comments and replys-->
-
+											{% empty %}
+											<p> It’s quiet here... Why not break the silence? </p>
+									{% endfor %}
 
 								</div>
 
@@ -245,7 +184,9 @@
 
 								<!--Reply form-->
 								<div class="reply-form margTMedium">
-									<form method="post" action="#">
+									<form method="post" action="{% url 'blog:single' pid=post.id %}">
+										{% csrf_token %}
+										<input type="hidden" name="post" value="{{ post.id }}">
 
 										<!--Input columns-->
 										<div class="inputColumns clearfix">
@@ -267,12 +208,17 @@
 										</div>
 										<!--End input columns-->
 
-										<input type="text" placeholder="WebSite" value="" id="website" name="website" >
+										<input type="text" placeholder="Subject" value="" id="Subject" name="subject" >
 									<textarea name="message"  placeholder="Message *" id="message" cols="45" rows="10"></textarea>
-									<input type="submit" value="Post a comment" class="submit" >
+									<div class="pb-3 captcha-wrapper">
+										<span class="captcha-label">Please fill out the captcha:</span>
+										<div class="captcha-box-comment">{{form.captcha}}</div>
+									</div>
+									<button type="submit" class="btn-send">Post A Comment</button>
 									</form>
 
 								</div>
+								
 								<!--End reply form-->
 
 
