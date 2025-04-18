@@ -2102,30 +2102,45 @@ button.btn-send {
 	
 }
 
-.works-holder {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: flex-start; /* یا center بسته به سلیقه */
-	gap: 20px; /* فاصله بین آیتم‌ها */
-  }
+
   
-  .grid {
-	width: calc(33.333% - 20px); /* سه‌تایی در هر ردیف */
-	box-sizing: border-box;
-	margin-bottom: 20px;
-	display: inline-block;
-  }
-  @media (max-width: 768px) {
-	.grid {
-	  width: 48%;
-	}
-  }
-  
-  @media (max-width: 480px) {
-	.grid {
-	  width: 100%;
-	}
-  }
-  
+
+  .no-works-message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60vh; /* یا 100vh برای وسط کل صفحه */
+    text-align: center;
+    font-size: 1.5rem;
+    color: #666;
+}
+
+.grid {
+    width: 220px;
+    height: 220px;
+    display: inline-block;
+    margin: 10px;
+    vertical-align: top;
+    overflow: hidden;
+    border-radius: 12px;
+    position: relative;
+    padding: 0;
+    background: none;
+    box-sizing: border-box;
+}
+
+.background-image {
+    width: 100%;
+    height: 100%;
+}
+
+.background-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: inherit;
+}
+
 
 /* -------------------- End media queries -------------------- */

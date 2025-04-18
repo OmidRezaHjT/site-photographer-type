@@ -107,9 +107,15 @@
 					<div class="sixteen columns">
 						{% for work in works %}
 						<!--Work-->
-						{% for al in work.album.all %}
-						<div class="grid work {{ al.name|slugify }}" data-filter="{{ al.name|slugify }}">
-							{% endfor %}
+						<div class="grid item 
+        				{% for alb in work.album.all %}
+            				{{ alb.name|slugify }} 
+        				{% endfor %}"
+        				data-filter="
+        				{% for alb in work.album.all %}
+            				{{ alb.name|slugify }} 
+        				{% endfor %}
+    ">
 
 							<a href="{% url 'work:single' pid=work.id %}">
 
@@ -138,6 +144,11 @@
 							</a>
 						</div>
 						<!--End work-->
+						{% empty %}
+						<div class="no-works-message">
+							<p>No works available yet.</p>
+						</div>
+
 						{% endfor%}
 
 
