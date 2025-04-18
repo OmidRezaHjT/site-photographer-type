@@ -2102,5 +2102,30 @@ button.btn-send {
 	
 }
 
+.works-holder {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start; /* یا center بسته به سلیقه */
+	gap: 20px; /* فاصله بین آیتم‌ها */
+  }
+  
+  .grid {
+	width: calc(33.333% - 20px); /* سه‌تایی در هر ردیف */
+	box-sizing: border-box;
+	margin-bottom: 20px;
+	display: inline-block;
+  }
+  @media (max-width: 768px) {
+	.grid {
+	  width: 48%;
+	}
+  }
+  
+  @media (max-width: 480px) {
+	.grid {
+	  width: 100%;
+	}
+  }
+  
 
 /* -------------------- End media queries -------------------- */
