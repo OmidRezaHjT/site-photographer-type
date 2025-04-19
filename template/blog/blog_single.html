@@ -141,12 +141,11 @@
 								<div class="entries-container margTMedium">																		
 
 									<!--Comments and replys-->
-
+									{% for comment in comments %}
 									<ul class="comments clearfix">
 									<li>
 									
 									<div class="comment"> 
-									{% for comment in comments %}
 									<div class="author-img">
 										<img src="{% static 'img/comment/commentprof.jpg' %}" alt="">
 
@@ -193,14 +192,22 @@
 
 										<div class="column1">
 											<div class="columnInner">
-										<input type="text" placeholder="Name *" value="" id="name" name="name" >
+											{% if user.is_authenticated %}
+												<input type="hidden" name="name" value="{{ user.first_name }}">
+											{% else %}
+												<input type="text" placeholder="Name *" value="" id="name" name="name" required>
+											{% endif %}
 										</div>
 										</div>
 
 										<!--Column-->
 										<div class="column2">
 											<div class="columnInner">
-										<input type="text" placeholder="Email *" value="" id="email" name="email">
+												{% if user.is_authenticated %}
+												<input type="hidden" name="email" value="{{ user.email }}">
+											{% else %}
+											<input type="text" placeholder="Email *" value="" id="email" name="email">
+											{% endif %}
 										</div>
 										</div>
 										<!--End column-->
@@ -208,7 +215,6 @@
 										</div>
 										<!--End input columns-->
 
-										<input type="text" placeholder="Subject" value="" id="Subject" name="subject" >
 									<textarea name="message"  placeholder="Message *" id="message" cols="45" rows="10"></textarea>
 									<div class="pb-3 captcha-wrapper">
 										<span class="captcha-label">Please fill out the captcha:</span>
@@ -219,7 +225,11 @@
 
 								</div>
 								
-								<!--End reply form-->
+								{% if messages %}
+									{% for message in messages %}
+									<div class="alert {{ message.tags }}">{{ message }}</div>
+									{% endfor %}
+								{% endif %}
 
 
 							</div>

@@ -1,81 +1,52 @@
 {% load static %}
-	<!--Header-->
-	<header class="header">
-		
-		
-		<!--Nav bar-->
-		<div class="nav-bar">
-			
+<!--Header-->
+<header class="header">
+	<!--Nav bar-->
+	<div class="nav-bar">
 		<!--Container-->
 		<div class="container">
-		
-		<div class="main-nav">
-			
-			
-		<div class="four columns logo-holder">
-			<a href="{% url 'website:index' %}">
-				<img class="logo" alt="Logo" src="{% static 'img/logo.png' %}">
-			</a>
-		</div>		
-		
-			<div class="twelve columns tRight nav-holder">
+			<div class="main-nav">
+				<div class="four columns logo-holder">
+					<a href="{% url 'website:index' %}">
+						<img class="logo" alt="Logo" src="{% static 'img/logo.png' %}">
+					</a>
+				</div>
 				
-
-				<a href="#" class="mobile-btn" ><i class="ti-menu"></i></a>
-				
-				
+				<div class="twelve columns tRight nav-holder">
+					<a href="#" class="mobile-btn"><i class="ti-menu"></i></a>
+					
 					<nav class="menu-holder main-nav">
 						<ul class="menu">
-						<li><a href="{% url 'website:index' %}">Home</a></li>
-
-						<li><a href="{% url 'work:index' %}">Work</a></li>
-
-						<li><a href="{% url 'website:contact' %}">Contact</a></li>
-
-
-
-						<li><a href="{% url 'blog:index' %}">Blog</a></li>
-
-						
-						
-						<li><a href="{% url 'website:about' %}">About</a></li>
-
-						
-					</ul>
-					
-					
-					
-
-						
-						
-						
+							<li><a href="{% url 'website:index' %}">Home</a></li>
+							<li><a href="{% url 'work:index' %}">Work</a></li>
+							<li><a href="{% url 'website:contact' %}">Contact</a></li>
+							<li><a href="{% url 'blog:index' %}">Blog</a></li>
+							<li><a href="{% url 'website:about' %}">About</a></li>
+							
+							{% if user.is_authenticated %}
+								<li><a href="{% url 'accounts:logout' %}">Logout</a></li>
+								<li><a>Login as {{ user.username }}</a></li>
+							{% else %}
+								<li><a href="{% url 'accounts:login' %}">Login</a></li>
+								<li><a href="{% url 'accounts:signup' %}">Sign Up</a></li>
+							{% endif %}
+						</ul>
 					</nav>
-				
+				</div>
 			</div>
-			
-			
-		</div>
-			
 		</div>
 		<!--End container-->
-		
-		</div>
-		<!--End nav bar-->
-		
-	</header>
-	<!--End header-->
+	</div>
+	<!--End nav bar-->
+</header>
+<!--End header-->
 
-	{% block content %}
+{% block content %}
+{% endblock %}
 
-    {% endblock %}
-
-	<!--Footer-->	
-	<footer class="footer-transparent footer">
-						
-
-		<!--Container-->
-
-		<!--End container-->
-	
-	</footer>
-	<!--End footer-->
+<!--Footer-->
+<footer class="footer-transparent footer">
+	<!--Container-->
+	<!--End container-->
+</footer>
+<!--End footer-->
