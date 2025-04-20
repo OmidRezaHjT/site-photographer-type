@@ -29,7 +29,7 @@ def custom_login_view(request):
             return render(request, 'accounts/login.html', {'error': 'Invalid username/email or password.'})
 
     return render(request, 'accounts/login.html')
-
+@login_required
 def custom_logout_view(request):
     logout(request)
     return redirect('/')
