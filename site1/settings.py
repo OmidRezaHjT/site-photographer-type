@@ -46,8 +46,21 @@ INSTALLED_APPS = [
     'robots',
     'work',
     'accounts',
+    'compressor',
+
+
 
 ]
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
+]
+
+COMPRESS_ENABLED = True
+COMPRESS_OUTPUT_DIR = 'CACHE'
+COMPRESS_CSS_HASHING_METHOD = 'content'
+COMPRESS_JS_HASHING_METHOD = 'content'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
