@@ -5,24 +5,35 @@
 	<div class="nav-bar">
 		<!--Container-->
 		<div class="container">
-			<div class="main-nav">
-				<div class="four columns logo-holder">
-					<a href="{% url 'website:index' %}">
-						<img class="logo" alt="Logo" src="{% static 'img/logo.png' %}">
-					</a>
-				</div>
+			<div class="main-nav" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
 				
-				<div class="twelve columns tRight nav-holder">
-					<a href="#" class="mobile-btn"><i class="ti-menu"></i></a>
-					
-					<nav class="menu-holder main-nav">
-						<ul class="menu">
+				<!-- لوگو و منوی اصلی -->
+				<div class="left-nav" style="display: flex; align-items: center; gap: 30px;">
+					<!-- لوگو -->
+					<div class="logo-holder">
+						<a href="{% url 'website:index' %}">
+							<img class="logo" alt="Logo" src="{% static 'img/logo.png' %}">
+						</a>
+					</div>
+
+					<!-- منو اصلی -->
+					<nav class="menu-holder">
+						<ul class="menu" style="display: flex; gap: 20px; list-style: none; margin: 0; padding: 0;">
 							<li><a href="{% url 'website:index' %}">Home</a></li>
 							<li><a href="{% url 'work:index' %}">Work</a></li>
 							<li><a href="{% url 'website:contact' %}">Contact</a></li>
 							<li><a href="{% url 'blog:index' %}">Blog</a></li>
 							<li><a href="{% url 'website:about' %}">About</a></li>
-							
+						</ul>
+					</nav>
+				</div>
+
+				<!-- ناحیه لاگین / ساین آپ -->
+				<div class="right-nav" style="display: flex; align-items: center;">
+					<a href="#" class="mobile-btn" style="margin-right: 10px;"><i class="ti-menu"></i></a>
+
+					<nav class="menu-holder">
+						<ul class="menu" style="display: flex; gap: 15px; list-style: none; margin: 0; padding: 0;">
 							{% if user.is_authenticated %}
 								<li><a href="{% url 'accounts:logout' %}">Logout</a></li>
 								<li><a>Login as {{ user.username }}</a></li>
@@ -33,6 +44,7 @@
 						</ul>
 					</nav>
 				</div>
+
 			</div>
 		</div>
 		<!--End container-->
