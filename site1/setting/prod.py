@@ -9,7 +9,7 @@ SECRET_KEY = 'django-insecure-fs(ye&^=shh#9&kqs-&rfzecu4s7=ydto0i&(ssqwm3jd941=f
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['www.camoshan.ir','camoshan.ir']
 
 #INSTALLED_APPS = []
 
@@ -18,22 +18,11 @@ ALLOWED_HOSTS = []
 SITE_ID = 1
 
 
-if DEBUG:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-        }
-    }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'postgres',
-            'USER': 'postgres',
-            'PASSWORD': 'postgres',
-            'HOST': '127.0.0.1',
-            'PORT': 5432,
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
         }
     }
 
